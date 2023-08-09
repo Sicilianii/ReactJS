@@ -1,14 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Message from './Message';
+import Form from "./Form";
 
 function App() {
-
-  const userName = 'Алена';
-
   return (
     <div className="App">
-      <Message name={userName}/>
+      <Message/>
     </div>
   );
 }
