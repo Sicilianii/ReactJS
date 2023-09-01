@@ -45,7 +45,7 @@ function Form(data, setData, updateMess) {
             author: ''
         })
     }
-    return (<form className="form" onSubmit={event => {addMess()}} >
+    return (<form className="form" onSubmit={() => {addMess()}} >
         <input className="form-intput" value={text} onChange={(e) => setData(p => ({...p, text: e.target.value}))}/>
         <input className="form-intput" value={author} onChange={(e) => setData(p => ({...p, author: e.target.value}))}/>
         <button type="submit">ADD</button>
