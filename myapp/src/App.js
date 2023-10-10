@@ -1,25 +1,17 @@
 import logo from './logo.svg';
 import React, {useState} from "react";
 function App() {
-    const [data, setData] = useState([]);
-    const [message, updateMess] = useState([
+    const [messageList, setMessageList] = useState([
         {
-            nameAuthor: 'Alex',
-            message: 'Hello my friends!'
-        },
-        {
-            nameAuthor: 'Jon',
-            message: 'Hi, Alex!'
-        },
-        {
-            nameAuthor: 'Bidon',
-            message: 'How are you?'
+            text: 'Text somethink',
+            author: 'Vlados'
         }
     ]);
+
   return (
     <div className="App">
-        <Form data={data} setData={setData} updateMess={updateMess}/>
-        <Message message={message}/>
+        <Form setMessage={setMessageList}></Form>
+        <Message message={messageList}/>
     </div>
   );
 }
@@ -27,27 +19,32 @@ function Message({message}) {
 
     return (message.map( mess =>
         <div className="mess-block">
-            <h2 className="name">{mess.name}</h2>
-            <p className="text-post">{mess.author}</p>
+            <h2 className="name">{mess.author}</h2>
+            <p className="text-post">{mess.text}</p>
         </div>
     ));
 }
 
-function Form(data, setData, updateMess) {
-    const {text, author} = data;
+function Form(updateMess) {
+    const [messageBody, setMessageBody] = useState({});
+    const {text, author} = messageBody;
+
+
     function addMess(ev) {
         ev.preventDefault();
         if (text.length > 0) {
             updateMess(per => [...per, {text,author}])
         }
-        setData({
+        setMessageBody({
             text: '',
             author: ''
         })
     }
-    return (<form className="form" onSubmit={() => {addMess()}} >
-        <input className="form-intput" value={text} onChange={(e) => setData(p => ({...p, text: e.target.value}))}/>
-        <input className="form-intput" value={author} onChange={(e) => setData(p => ({...p, author: e.target.value}))}/>
+
+
+    return (<form className="form" onSubmit={(event) => addMess(event) } >
+        <input className="form-intput" value={text} onChange={(e) => setMessageBody(p => ({...p, text: e.target.value}))}/>
+        <input className="form-intput" value={author} onChange={(e) => setMessageBody(p => ({...p, author: e.target.value}))}/>
         <button type="submit">ADD</button>
     </form>);
 }
