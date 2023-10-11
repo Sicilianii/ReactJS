@@ -31,8 +31,7 @@ function Message({message}) {
 function Form  ({data, setData, setMessage}) {
 
     const {text, author} = data;
-
-    console.log(setMessage);
+    
     function addMess(ev) {
         ev.preventDefault();
         if (text.length > 0) {
