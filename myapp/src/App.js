@@ -1,20 +1,23 @@
 import logo from './logo.svg';
 import React, {useState} from "react";
 function App() {
-    const [messageList, setMessageList] = useState([
+    const [messageList, setMessageList] = useState([]);
+    const [messageBody, setMessageBody] = useState(
         {
-            text: 'Text somethink',
-            author: 'Vlados'
+            text: 'Vlados',
+            author: 'Pisos'
         }
-    ]);
+    );
 
   return (
     <div className="App">
-        <Form setMessage={setMessageList}></Form>
+        <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList}></Form>
         <Message message={messageList}/>
     </div>
   );
 }
+
+export default App;
 function Message({message}) {
 
     return (message.map( mess =>
@@ -25,27 +28,27 @@ function Message({message}) {
     ));
 }
 
-function Form(updateMess) {
-    const [messageBody, setMessageBody] = useState({});
-    const {text, author} = messageBody;
+function Form  ({data, setData, setMessage}) {
 
+    const {text, author} = data;
 
+    console.log(setMessage);
     function addMess(ev) {
         ev.preventDefault();
         if (text.length > 0) {
-            updateMess(per => [...per, {text,author}])
+            setMessage(per => [...per, {text,author}])
         }
-        setMessageBody({
+        setData({
             text: '',
             author: ''
         })
     }
 
 
-    return (<form className="form" onSubmit={(event) => addMess(event) } >
-        <input className="form-intput" value={text} onChange={(e) => setMessageBody(p => ({...p, text: e.target.value}))}/>
-        <input className="form-intput" value={author} onChange={(e) => setMessageBody(p => ({...p, author: e.target.value}))}/>
+    return (<form className="form" onSubmit={addMess} >
+        <input className="form-intput" placeholder="Name" value={text} onChange = {(e) => setData(p => ({...p, text: e.target.value}))}/>
+        <input className="form-intput" placeholder="Text" value={author} onChange={(e) => setData(p => ({...p, author: e.target.value}))}/>
         <button type="submit">ADD</button>
     </form>);
 }
-export default App;
+
