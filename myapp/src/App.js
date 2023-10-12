@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 function App() {
     const [messageList, setMessageList] = useState([]);
     const [messageBody, setMessageBody] = useState(
@@ -9,13 +9,24 @@ function App() {
         }
     );
 
-  return (
+    let ROBOT_MESSAGE = "Hey man, I got your message";
+
+    useEffect( () => {
+        if(messageList.length > 0 && messageList.slice(-1)[0].author !== 'robot') {
+            setTimeout(()=> {
+                setMessageList(pervstate => [...pervstate, {text:ROBOT_MESSAGE, author:"robot"}])
+            },1500)
+        }
+    },[messageList])
+
+    return (
     <div className="App">
         <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList}></Form>
         <Message message={messageList}/>
     </div>
   );
 }
+
 
 export default App;
 function Message({message}) {
@@ -31,7 +42,7 @@ function Message({message}) {
 function Form  ({data, setData, setMessage}) {
 
     const {text, author} = data;
-    
+
     function addMess(ev) {
         ev.preventDefault();
         if (text.length > 0) {
