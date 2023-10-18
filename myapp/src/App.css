@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  background-color: rgb(20, 26, 31);
+  padding: 25px;
+  box-sizing: border-box;
+}

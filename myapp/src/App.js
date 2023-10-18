@@ -1,13 +1,19 @@
-import logo from './logo.svg';
 import React, {useEffect, useState} from "react";
 import Message from "./templates/Message";
 import Form from "./templates/Form";
+import Chats from "./templates/Chats";
 function App() {
     const [messageList, setMessageList] = useState([]);
+    const [chatList, setchatList] = useState([
+        {
+            id: 1,
+            name: 'Home chat'
+        }
+    ]);
     const [messageBody, setMessageBody] = useState(
         {
-            text: 'Vlados',
-            author: 'Pisos'
+            text: '',
+            author: ''
         }
     );
 
@@ -23,8 +29,13 @@ function App() {
 
     return (
     <div className="App">
-        <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList}></Form>
-        <Message message={messageList}/>
+        <Chats className={'main'} />
+        <div className={'app-chat-place'}>
+            <div className={'mess-list'}>
+                <Message message={messageList}/>
+            </div>
+            <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList} messageL={messageList}></Form>
+        </div>
     </div>
   );
 }

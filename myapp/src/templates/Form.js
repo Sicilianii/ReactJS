@@ -1,8 +1,18 @@
-import React from "react";
+import Button from '@mui/material/Button';
+import {useEffect, useRef} from "react";
 
-function Form ({data, setData, setMessage}) {
+function Form ({data, setData, setMessage, messageL}) {
 
     const {text, author} = data;
+    const inputName = useRef(null);
+    const inputText = useRef(null);
+
+    useEffect(() => {
+        if (text == '' && author =='') {
+            inputText.current?.focus();
+            inputName.current?.focus();
+        }
+    }, [messageL]);
 
     function addMess(ev) {
         ev.preventDefault();
@@ -15,11 +25,18 @@ function Form ({data, setData, setMessage}) {
         })
     }
 
-    return (<form className="form" onSubmit={addMess} >
-        <input className="form-intput" placeholder="Name" value={text} onChange = {(e) => setData(p => ({...p, text: e.target.value}))}/>
-        <input className="form-intput" placeholder="Text" value={author} onChange={(e) => setData(p => ({...p, author: e.target.value}))}/>
-        <button type="submit">ADD</button>
-    </form>);
+    return (
+        <form className="form" onSubmit={addMess} >
+            <input className="form-intput" ref={inputName} placeholder="Name" value={author} onChange = {(e) => setData(p => ({...p, author: e.target.value}))}/>
+            <input className="form-intput" ref={inputText} placeholder="Text" value={text} onChange = {(e) => setData(p => ({...p, text: e.target.value}))}/>
+            <Button className={'form-reset-btn'} type={"reset"} variant="outlined">
+                Delete
+            </Button>
+            <Button className={'form-submit-btn'} type={'submit'} variant="contained">
+                Send
+            </Button>
+        </form>
+    );
 }
 
 export default Form;
