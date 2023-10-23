@@ -29,13 +29,15 @@ function App() {
 
     return (
     <div className="App">
-        <Chats className={'main'} />
+
+        <Chats/>
         <div className={'app-chat-place'}>
             <div className={'mess-list'}>
                 <Message message={messageList}/>
             </div>
             <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList} messageL={messageList}></Form>
         </div>
+
     </div>
   );
 }
