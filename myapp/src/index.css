@@ -70,3 +70,14 @@ code {
 .form-submit-btn {
 
 }
+.necrash {position: relative}
+.crush {
+  position: absolute;
+  top: 88px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
