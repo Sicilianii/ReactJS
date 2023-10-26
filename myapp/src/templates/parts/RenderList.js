@@ -7,7 +7,7 @@ export default function Render({List, SetList}) {
     return (
         List.map( (item,i) =>
             <ListItemButton sx={{ pl: 4 }} key={i}>
-                <Link to={'/chats'}> {item.name} </Link>
+                <Link to={`/chats/${item.id}`}> {item.name} </Link>
             </ListItemButton>
         )
     );

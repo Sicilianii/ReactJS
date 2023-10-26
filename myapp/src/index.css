@@ -39,8 +39,14 @@ code {
   font-size: 12px;
   font-weight: 200;
 }
+.nav {
+  max-width: 220px;
+  width: 100%;
+}
 .App {
   max-width: 800px;
+  min-height: 700px;
+  height: 100%;
   width: 100%;
   display: flex;
   margin: 50px;

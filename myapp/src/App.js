@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import Routed from "./Routing/Routed";
 import Render from "./templates/parts/RenderList";
+import ModalForm from "./templates/parts/AddChatsForm";
 
 
 function App(pattern) {
@@ -20,14 +21,11 @@ function App(pattern) {
     const [open, setOpen] = React.useState(true);
     const handleClick = () => {setOpen(!open);};
 
-    function addChats() {
-
-    }
 
     return (
     <div className="App">
         <BrowserRouter>
-            <List
+            <List className={'nav'}
                 sx={{ width: '100%', maxWidth: 360 }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
@@ -41,11 +39,8 @@ function App(pattern) {
                 <ListItemButton onClick={handleClick} className={'necrash'}>
                     <ListItemText primary="Chats" />
                 </ListItemButton>
-                <button className={'crush'} onClick={addChats}>
-                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 12H18M12 6V18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+
+                <ModalForm List={chatList} setChats={setchatList}/>
                 <Collapse in={open} timeout="auto" unmountOnExit>
 
                     <List component="div" disablePadding>

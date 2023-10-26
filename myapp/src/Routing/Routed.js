@@ -10,7 +10,7 @@ export default function  Routed() {
         <>
             <Routes>
                 <Route path={'/index'} element={ <IndexX /> }></Route>
-                <Route path={'/chats'} element={ <PlaceHolderChats/> }></Route>
+                <Route path={'/chats/*'} element={ <PlaceHolderChats/> }></Route>
                 <Route path={'*'} element={ <NotFound /> }></Route>
                 <Route path={'/profile'} element={ <Profile /> }></Route>
             </Routes>
