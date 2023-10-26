@@ -76,7 +76,7 @@ code {
 .form-submit-btn {
 
 }
-.necrash {position: relative}
+.necrash, .chat__item {position: relative}
 .crush {
   position: absolute;
   top: 88px;
@@ -86,4 +86,23 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.chat__item-close {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.chat__item-close svg {
+  fill: black;
+}
+.chat__item-close:hover svg {
+  fill: red;
 }
