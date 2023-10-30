@@ -106,3 +106,4 @@ code {
 .chat__item-close:hover svg {
   fill: red;
 }
+.list__item {position: relative;}
