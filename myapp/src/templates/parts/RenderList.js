@@ -1,12 +1,12 @@
 import ListItemButton from "@mui/material/ListItemButton";
 import {Link} from "react-router-dom";
-import React, {useState} from "react";
+import React from "react";
 
 export default function Render({List, setList}) {
 
     function delChats(ID) {
         let INDEX = 0;
-        List.forEach( ( el, i ) => {if (el.id == ID) {INDEX = i}});
+        List.forEach( ( el, i ) => {if (el.id === ID) {INDEX = i}});
         let newList = List.filter( (el, i) => i !== INDEX);
         setList( () => (newList) );
     }
