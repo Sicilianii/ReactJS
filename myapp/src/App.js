@@ -12,12 +12,6 @@ import ModalForm from "./templates/parts/AddChatsForm";
 
 function App(pattern) {
 
-    const [chatList, setchatList] = useState([
-        {
-            id: 1,
-            name: 'Home chat'
-        }
-    ]);
 
     const [open, setOpen] = React.useState(true);
     const handleClick = () => {setOpen(!open);};
@@ -41,11 +35,11 @@ function App(pattern) {
                     <ListItemText primary="Chats" />
                 </ListItemButton>
 
-                <ModalForm List={chatList} setChats={setchatList}/>
+                <ModalForm/>
                 <Collapse in={open} timeout="auto" unmountOnExit>
 
                     <List component="div" disablePadding>
-                        <Render List={chatList} setList={setchatList}/>
+                        <Render/>
                     </List>
                 </Collapse>
             </List>

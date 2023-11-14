@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 
 export default function IndexX() {
+
     const Checkbox = useSelector(state => state);
     const dispatch = useDispatch();
 
