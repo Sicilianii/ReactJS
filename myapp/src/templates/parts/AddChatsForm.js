@@ -2,6 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addChat} from "../../slices/slice";
 
 const style = {
     position: 'absolute',
@@ -19,17 +21,16 @@ export default function ModalForm({List , setChats}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const dispacth = useDispatch();
 
     const [prepareChat, SetPrepareChat] = useState({
         name: ''
     });
 
+
     function addChats(ev) {
         ev.preventDefault();
-        setChats(pervstate => [...pervstate, {
-            id: List.length + 1,
-            name: prepareChat.name
-        }]);
+        dispacth( addChat( {nameChat: prepareChat} ) );
         handleClose();
     }
 

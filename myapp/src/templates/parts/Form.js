@@ -1,23 +1,33 @@
 import Button from '@mui/material/Button';
 import {useEffect, useRef} from "react";
+import {useDispatch} from "react-redux";
+import {addMessage} from "../../slices/slice";
 
-function Form ({data, setData, setMessage, messageL}) {
+function Form ({data, setData, idChat}) {
+
+    const dispath = useDispatch();
 
     const {text, author} = data;
     const inputName = useRef(null);
     const inputText = useRef(null);
 
-    useEffect(() => {
-        if (text == '' && author =='') {
-            inputText.current?.focus();
-            inputName.current?.focus();
-        }
-    }, [messageL]);
+    // useEffect(() => {
+    //     if (text == '' && author =='') {
+    //         inputText.current?.focus();
+    //         inputName.current?.focus();
+    //     }
+    // }, [messageL]);
 
     function addMess(ev) {
         ev.preventDefault();
         if (text.length > 0) {
-            setMessage(per => [...per, {text,author}])
+            dispath( addMessage({
+                id: idChat - 1,
+                mes: {
+                    t: text,
+                    a: author
+                }
+            }) )
         }
         setData({
             text: '',

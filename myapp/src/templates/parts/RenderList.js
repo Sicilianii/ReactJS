@@ -12,7 +12,7 @@ export default function Render() {
     return (
         Chats.map( (item,i) =>
             <div className={'list__item'}>
-                <Link to={`/chats/${item.idChats}`}>
+                <Link to={`/chats/${item.idChats}`} >
                     <ListItemButton sx={{ pl: 4 }} key={i} className={'chat__item'}>
                         {item.nameChats}
                     </ListItemButton>
